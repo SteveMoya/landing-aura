@@ -1,0 +1,41 @@
+---
+import { ritual } from '../../data/ritual';
+import Section from '../ui/Section.astro';
+import Icon from '../ui/Icon.astro';
+
+const tones: Record<string, string> = {
+  rose: 'bg-rose/70',
+  lilac: 'bg-lilac/70',
+  peach: 'bg-peach/70',
+};
+---
+
+<Section id="ritual" ariaLabelledBy="ritual-title">
+  <div class="mx-auto mb-14 max-w-2xl text-center">
+    <p class="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-ink/45">Ritual</p>
+    <h2 id="ritual-title" class="font-display text-4xl font-bold tracking-tight sm:text-5xl">
+      Tres minutos. <span class="bg-gradient-to-r from-pink-500 via-purple-500 to-teal-400 bg-clip-text text-transparent">Dos veces al día.</span>
+    </h2>
+  </div>
+
+  <ol class="relative mx-auto grid max-w-4xl gap-6 md:grid-cols-3">
+    <div aria-hidden="true" class="absolute left-1/2 top-14 hidden h-px w-2/3 -translate-x-1/2 bg-gradient-to-r from-transparent via-lilac/70 to-transparent md:block"></div>
+    {
+      ritual.map((step, index) => (
+        <li data-reveal style={`--reveal-delay:${index * 100}ms`} class="relative">
+          <span class:list={['mx-auto grid h-14 w-14 place-items-center rounded-full border border-white/80 font-display text-lg font-bold text-ink shadow-aura', tones[step.tone]]}>
+            {step.step}
+          </span>
+          <div class="glass mt-6 rounded-3xl p-6 text-center transition-transform duration-300 hover:-translate-y-1">
+            <h3 class="font-display text-xl font-bold tracking-tight">{step.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink/60">{step.description}</p>
+            <p class="mt-4 inline-flex items-center gap-1.5 text-xs font-medium uppercase tracking-[0.15em] text-ink/45">
+              <Icon name="sun" size={13} class="text-ink/40" />
+              {step.time}
+            </p>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+</Section>

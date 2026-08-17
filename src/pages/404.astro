@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+---
+
+<BaseLayout title="Página no encontrada" description="La página que buscas no existe." noindex>
+  <section class="flex min-h-[80svh] flex-col items-center justify-center px-6 text-center">
+    <p class="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-ink/45">Página no encontrada</p>
+    <h1 class="font-display text-6xl font-bold tracking-tight sm:text-7xl">
+      4<span class="bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">0</span>4
+    </h1>
+    <p class="mt-4 max-w-md text-ink/60">
+      Esta página se desvaneció como una neblina. Vuelve a tu ritual.
+    </p>
+    <Button href="/" class="mt-8">
+      Volver al inicio
+    </Button>
+  </section>
+</BaseLayout>

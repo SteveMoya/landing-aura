@@ -1,0 +1,58 @@
+---
+import { site } from '../../data/site';
+import Icon from '../ui/Icon.astro';
+---
+
+<div
+  data-menu
+  id="mobile-menu"
+  class="fixed inset-0 z-40 hidden lg:hidden"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Menú de navegación"
+>
+  <div class="absolute inset-0 bg-lilac/80 backdrop-blur-2xl"></div>
+
+  <nav class="container-aura relative flex h-full flex-col justify-center gap-1" aria-label="Menú móvil">
+    {
+      site.nav.map((item) => (
+        <a
+          href={item.href}
+          class="py-2 font-display text-4xl font-semibold tracking-tight text-ink transition-transform duration-200 hover:translate-x-2"
+        >
+          {item.label}
+        </a>
+      ))
+    }
+    <a
+      href="#productos"
+      class="mt-8 inline-flex w-full items-center justify-center rounded-full bg-ink px-6 py-4 font-body text-sm font-semibold text-aura-glow"
+    >
+      Comprar ahora
+    </a>
+    <div class="mt-10 flex gap-4">
+      {
+        site.socials.map((s) => (
+          <a
+            href={s.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={s.name}
+            class="glass inline-flex h-11 w-11 items-center justify-center rounded-full text-ink transition-transform duration-200 hover:-translate-y-0.5"
+          >
+            <Icon name={s.icon} size={18} />
+          </a>
+        ))
+      }
+    </div>
+  </nav>
+
+  <button
+    data-menu-close
+    type="button"
+    class="glass absolute right-5 top-5 inline-flex h-10 w-10 items-center justify-center rounded-full text-ink"
+    aria-label="Cerrar menú"
+  >
+    <Icon name="close" size={22} />
+  </button>
+</div>

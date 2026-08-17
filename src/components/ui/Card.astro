@@ -1,0 +1,21 @@
+---
+interface Props {
+  class?: string;
+  padded?: boolean;
+  strong?: boolean;
+  as?: 'article' | 'div' | 'li';
+}
+
+const { padded = true, strong = false, as: Tag = 'div', class: className }: Props = Astro.props;
+---
+
+<Tag
+  class:list={[
+    'relative rounded-3xl transition-all duration-300 ease-out hover:-translate-y-1',
+    strong ? 'glass-strong' : 'glass',
+    padded && 'p-7',
+    className,
+  ]}
+>
+  <slot />
+</Tag>

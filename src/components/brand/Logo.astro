@@ -1,0 +1,24 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<a
+  href="/"
+  aria-label="Aura — inicio"
+  class:list={['group inline-flex items-center gap-2.5', className]}
+>
+  <!-- Marca: gota de luz con gradiente -->
+  <span
+    class="grid h-9 w-9 place-items-center rounded-full bg-gradient-to-br from-rose via-lilac to-mint shadow-glow-rose transition-transform duration-300 group-hover:scale-110"
+    aria-hidden="true"
+  >
+    <span class="h-3.5 w-3.5 rounded-full bg-white/90 shadow-[0_2px_8px_rgb(58_46_74/0.25)]"></span>
+  </span>
+  <span class="font-display text-2xl font-semibold tracking-tight text-ink transition-opacity duration-200 group-hover:opacity-80">
+    aura
+  </span>
+</a>

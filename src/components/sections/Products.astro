@@ -1,0 +1,65 @@
+---
+import { products } from '../../data/products';
+import Section from '../ui/Section.astro';
+import Card from '../ui/Card.astro';
+import Badge from '../ui/Badge.astro';
+import Button from '../ui/Button.astro';
+import Icon from '../ui/Icon.astro';
+
+const tones: Record<string, string> = {
+  rose: 'from-rose/70 to-white/50',
+  lilac: 'from-lilac/70 to-white/50',
+  peach: 'from-peach/70 to-white/50',
+  mint: 'from-mint/70 to-white/50',
+};
+
+const toneBadge: Record<string, 'rose' | 'lilac' | 'peach' | 'mint'> = {
+  rose: 'rose',
+  lilac: 'lilac',
+  peach: 'peach',
+  mint: 'mint',
+};
+---
+
+<Section id="productos" ariaLabelledBy="products-title" class="!pt-0">
+  <div class="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+    <div>
+      <p class="mb-3 text-xs font-semibold uppercase tracking-[0.22em] text-ink/45">Productos</p>
+      <h2 id="products-title" class="font-display text-4xl font-bold tracking-tight sm:text-5xl">
+        El ritual completo, <span class="bg-gradient-to-r from-pink-500 via-purple-500 to-teal-400 bg-clip-text text-transparent">en cuatro pasos</span>
+      </h2>
+    </div>
+    <p class="max-w-sm text-ink/60">
+      Fórmulas concentradas en envases de vidrio reutilizables. Envíos en 48 h con empaque libre de plástico.
+    </p>
+  </div>
+
+  <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+    {
+      products.map((p, index) => (
+        <li data-reveal style={`--reveal-delay:${index * 80}ms`}>
+          <Card strong class:list={['group flex h-full flex-col', p.featured && 'ring-2 ring-lilac']}>
+            <div class="flex items-start justify-between">
+              <span class="font-display text-sm font-semibold tracking-[0.25em] text-ink/40 uppercase">{p.size}</span>
+              {p.featured && <Badge tone="lilac">Más vendido</Badge>}
+            </div>
+            <div class="my-6 flex h-40 items-center justify-center">
+              <div class:list={['flex h-32 w-24 items-center justify-center rounded-[1.75rem] border border-white/80 bg-gradient-to-b shadow-aura backdrop-blur-sm transition-transform duration-300 group-hover:scale-105', tones[p.tone]]}>
+                <span class="h-10 w-10 rounded-full bg-white/80 shadow-[0_0_20px_rgb(255_255_255/0.8)]"></span>
+              </div>
+            </div>
+            <h3 class="font-display text-xl font-bold tracking-tight">{p.name}</h3>
+            <p class="mt-1.5 flex-1 text-sm leading-relaxed text-ink/60">{p.tagline}</p>
+            <div class="mt-5 flex items-center justify-between border-t border-ink/10 pt-4">
+              <p class="font-display text-2xl font-bold">{p.price}</p>
+              <Button variant="glass" size="sm">
+                Añadir
+                <Icon name="plus" size={14} />
+              </Button>
+            </div>
+          </Card>
+        </li>
+      ))
+    }
+  </ul>
+</Section>

@@ -1,0 +1,25 @@
+---
+interface Props {
+  class?: string;
+  tone?: 'rose' | 'lilac' | 'peach' | 'mint';
+}
+
+const { tone = 'rose', class: className } = Astro.props;
+
+const tones = {
+  rose: 'bg-rose/70 text-ink border-white/70',
+  lilac: 'bg-lilac/70 text-ink border-white/70',
+  peach: 'bg-peach/70 text-ink border-white/70',
+  mint: 'bg-mint/70 text-ink border-white/70',
+} as const;
+---
+
+<span
+  class:list={[
+    'inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1.5 font-body text-xs font-semibold',
+    tones[tone],
+    className,
+  ]}
+>
+  <slot />
+</span>
