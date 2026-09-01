@@ -4,6 +4,9 @@
 
 Landing page estática construida con **Astro 7 + Tailwind CSS v4 + TypeScript**, preparada para **Cloudflare Pages**. Serie de 9 landing pages por estilo de diseño (este proyecto: **Glassmorphism**).
 
+
+![Vista previa — 🪞 Aura Landing](docs/preview.png)
+
 ---
 
 ## 🚀 Demo en producción
