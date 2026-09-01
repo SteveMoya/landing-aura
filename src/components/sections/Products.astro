@@ -44,8 +44,9 @@ const toneBadge: Record<string, 'rose' | 'lilac' | 'peach' | 'mint'> = {
               {p.featured && <Badge tone="lilac">Más vendido</Badge>}
             </div>
             <div class="my-6 flex h-40 items-center justify-center">
-              <div class:list={['flex h-32 w-24 items-center justify-center rounded-[1.75rem] border border-white/80 bg-gradient-to-b shadow-aura backdrop-blur-sm transition-transform duration-300 group-hover:scale-105', tones[p.tone]]}>
-                <span class="h-10 w-10 rounded-full bg-white/80 shadow-[0_0_20px_rgb(255_255_255/0.8)]"></span>
+              <div class:list={['relative h-32 w-24 overflow-hidden rounded-[1.75rem] border border-white/80 bg-gradient-to-b shadow-aura backdrop-blur-sm transition-transform duration-300 group-hover:scale-105', tones[p.tone]]}>
+                <img src={p.image} alt={p.name} class="h-full w-full object-cover opacity-90" loading="lazy" />
+                <div class="absolute inset-0 rounded-[1.75rem] bg-white/10 ring-1 ring-white/40"></div>
               </div>
             </div>
             <h3 class="font-display text-xl font-bold tracking-tight">{p.name}</h3>

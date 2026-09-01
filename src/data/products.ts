@@ -4,6 +4,7 @@ export interface Product {
   price: string;
   size: string;
   tone: 'rose' | 'lilac' | 'peach' | 'mint';
+  image: string;
   featured?: boolean;
 }
 
@@ -15,6 +16,7 @@ export const products: Product[] = [
     price: '$48',
     size: '30 ml',
     tone: 'peach',
+    image: '/product-skincare.jpg',
     featured: true,
   },
   {
@@ -23,6 +25,7 @@ export const products: Product[] = [
     price: '$42',
     size: '50 ml',
     tone: 'rose',
+    image: '/product-skincare.jpg',
   },
   {
     name: 'Limpiador de Espuma',
@@ -30,6 +33,7 @@ export const products: Product[] = [
     price: '$26',
     size: '150 ml',
     tone: 'mint',
+    image: '/product-skincare.jpg',
   },
   {
     name: 'Protector Solar Invisible',
@@ -37,5 +41,6 @@ export const products: Product[] = [
     price: '$34',
     size: '40 ml',
     tone: 'lilac',
+    image: '/product-skincare.jpg',
   },
 ];
